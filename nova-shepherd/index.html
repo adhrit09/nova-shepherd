@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Nova Shepherd</title>
+<script src="https://sdk.crazygames.com/crazygames-sdk-v3.js"></script>
+<link rel="preload" href="fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="ui">
+  <!-- Loading -->
+  <section id="s-loading" class="screen show">
+    <div class="logo small">NOVA<span>SHEPHERD</span></div>
+    <div class="bar"><i id="load-fill"></i></div>
+  </section>
+
+  <!-- Main menu -->
+  <section id="s-menu" class="screen">
+    <div class="logo">NOVA<span>SHEPHERD</span></div>
+    <p class="tag">Your moons are your shield. Don't let them drift away.</p>
+    <button id="b-play" class="btn big primary">PLAY</button>
+    <div class="row">
+      <button id="b-shop" class="btn">Observatory</button>
+      <button id="b-skins" class="btn">Stars</button>
+      <button id="b-settings" class="btn">Settings</button>
+    </div>
+    <div class="stats" id="menu-stats"></div>
+  </section>
+
+  <!-- Observatory (meta upgrades) -->
+  <section id="s-shop" class="screen">
+    <div class="panel">
+      <div class="phead"><h2>Observatory</h2><div class="dust" id="shop-dust"></div></div>
+      <p class="hint">Permanent upgrades, bought with stardust earned in runs.</p>
+      <div class="list scroll" id="shop-list"></div>
+      <button class="btn back" data-back>Back</button>
+    </div>
+  </section>
+
+  <!-- Skins -->
+  <section id="s-skins" class="screen">
+    <div class="panel">
+      <div class="phead"><h2>Choose your star</h2><div class="dust" id="skins-dust"></div></div>
+      <div class="grid scroll" id="skins-list"></div>
+      <button class="btn back" data-back>Back</button>
+    </div>
+  </section>
+
+  <!-- Settings -->
+  <section id="s-settings" class="screen">
+    <div class="panel narrow">
+      <div class="phead"><h2>Settings</h2></div>
+      <div class="toggles" id="settings-list"></div>
+      <button class="btn back" data-back>Back</button>
+    </div>
+  </section>
+
+  <!-- Level up -->
+  <section id="s-levelup" class="screen dim">
+    <h2 class="title-glow">LEVEL UP</h2>
+    <p class="hint" id="lvl-hint">Choose one</p>
+    <div class="cards" id="cards"></div>
+    <button id="b-reroll" class="btn small">Reroll</button>
+  </section>
+
+  <!-- Pause -->
+  <section id="s-pause" class="screen dim">
+    <div class="panel narrow">
+      <div class="phead"><h2>Paused</h2></div>
+      <div class="build" id="pause-build"></div>
+      <div class="toggles" id="pause-settings"></div>
+      <button id="b-resume" class="btn primary">Resume</button>
+      <button id="b-quit" class="btn">Abandon run</button>
+    </div>
+  </section>
+
+  <!-- Game over -->
+  <section id="s-over" class="screen dim">
+    <div class="panel narrow">
+      <h2 class="title-glow" id="over-title">YOUR LIGHT FADES</h2>
+      <div class="result" id="over-stats"></div>
+      <div class="earned" id="over-dust"></div>
+      <button id="b-double" class="btn reward"><span class="adicon">&#9654;</span> Watch ad: double stardust</button>
+      <p class="hint" id="adblock-note"></p>
+      <div class="row">
+        <button id="b-again" class="btn primary">Play again</button>
+        <button id="b-menu" class="btn">Menu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blocks input while an ad plays -->
+  <section id="s-ad" class="screen dim"><p class="hint">Loading&hellip;</p></section>
+
+  <button id="b-pause" class="iconbtn" aria-label="Pause">&#10074;&#10074;</button>
+  <div id="toast"></div>
+</div>
+
+<script src="js/audio.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
